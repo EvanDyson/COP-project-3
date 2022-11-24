@@ -4,6 +4,8 @@ void mergeSort (City* arr[], int left, int right);
 void merge(City* arr[], int left, int right);
 //array based mergeSort
 
+//small edit to show GitHub example
+
 void mergeSort (std::vector<City*> arr, int left, int right);
 void merge(std::vector<City*> arr, int left, int right);
 //vector based mergeSort; mergeSort information aided by class slides
