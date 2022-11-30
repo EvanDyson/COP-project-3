@@ -1,9 +1,8 @@
 #pragma once
 #include <iostream>
-#include <algorithm>
+//#include <algorithm>
 #include <vector>
 #include "City.h"
-using namespace std;
 
 //array based mergeSort
 void mergeSort(City* arr[], int left, int right);
@@ -19,6 +18,7 @@ void radixSort(City* arr[], int size);
 
 //vector based radixMap sort
 void radixSort(vector<City*> arr);
+
 
 void mergeSort(City* arr[], int left, int right)
 {
@@ -119,8 +119,7 @@ void merge(vector<City*> arr, int left, int right)
     } //assigns left half array elements to left half representation
 
     int counter, indexL, indexR;
-    counter = left;
-    indexL = indexR = 0;
+    counter = indexL = indexR = 0;
     //creates index for the entire array, right subarray, and left subarray
     while (indexL < leftSub.size() && indexR < rightSub.size())
     {

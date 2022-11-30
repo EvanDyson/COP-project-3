@@ -2,10 +2,9 @@
 //#include <vector>     included in sort.h
 //#include "City.h"     included in sort.h
 #include <fstream>
-#include <string>
+//#include <string>
 #include <sstream>
 #include "Sort.h"
-using namespace std;
 
 // WILL BE USING CITIES RANDOM SKEWED BASED ON POP AND OTHER PARAMS
 // "citiesRandomSkewed.csv"
@@ -17,10 +16,11 @@ int main()
     // initialize the city array
     //vector<City*> cVector;
     
-    //full size array
+    // full size array
     //City* cArr[100000];
     // test array
-    City* cArr[10];
+    City* mergeArr[10];
+    City* radixArr[10];
 
     // initialize a string to grab lines from csv file
     string inLine;
@@ -44,7 +44,7 @@ int main()
             getline(str, size, ',');
             getline(str, avgIncome, ',');
             // save them into a city, in the constructor it sets the weights
-            //City* pushMe(name, stoi(population), stoi(size), stod(density), stoi(avgHousingCost), stoi(avgIncome));
+            // City* pushMe(name, stoi(population), stoi(size), stod(density), stoi(avgHousingCost), stoi(avgIncome));
             pushMe->name = name;
             pushMe->population = stoi(population);
             pushMe->size = stoi(size);
@@ -54,10 +54,11 @@ int main()
             pushMe->setWeight();
 
             // push city onto the city vector to be sorted later
-            //cVector.push_back(pushMe);
+            // cVector.push_back(pushMe);
 
             // copy pushme into the array at the indexed city
-            cArr[index] = pushMe;
+            mergeArr[index] = pushMe;
+            radixArr[index] = pushMe;
             index++;
         }
         cFile.close();
@@ -66,14 +67,18 @@ int main()
         cout << "Error opening file.\n";
 
     //mergeSort(cVector, 0, 5);
-    // 
-    //radixSort(cArr, 5);
+    mergeSort(mergeArr, 0, 9);
+ 
+    radixSort(radixArr, 9);
     
-    // still need to test setting the weighted scores
-    // still need to test sorting the city vector based on scores
-    // after both are successful integrate into GUI to get user inputs for wanted outputs to use for specific weighted scores.
-    // test setting specific parameters and see if expected outputs are seen
-
+    /*
+    still need to test sorting the city vector based on scores
+    matrix works but radix has a bug where last thing is not sorted properly
+     
+    still need to test setting the weighted scores
+    after both are successful integrate into GUI to get user inputs for wanted outputs to use for specific weighted scores.
+    test setting specific parameters and see if expected outputs are seen
+    */
 
 
 // test printing the first 5 in the vector
@@ -87,13 +92,14 @@ int main()
         //cout << "Avg. Housing Cost: " << cVector[i]->avgHousingCost << endl;
         //// current weighted score is pop / 2
         //cout << "Score: " << cVector[i]->weightScore << endl << endl;
-        cout << "CITY #" << i+1 << "'s name: " << cArr[i]->name << endl;
-        cout << "Population: " << cArr[i]->population << endl;
-        cout << "Density: " << cArr[i]->density << endl;
-        cout << "Size: " << cArr[i]->size << endl;
-        cout << "Avg. Income: " << cArr[i]->avgIncome << endl;
-        cout << "Avg. Housing Cost: " << cArr[i]->avgHousingCost << endl;
+
+        cout << "CITY #" << i+1 << "'s name: " << mergeArr[i]->name << endl;
+        cout << "Population: " << mergeArr[i]->population << endl;
+        cout << "Density: " << mergeArr[i]->density << endl;
+        cout << "Size: " << mergeArr[i]->size << endl;
+        cout << "Avg. Income: " << mergeArr[i]->avgIncome << endl;
+        cout << "Avg. Housing Cost: " << mergeArr[i]->avgHousingCost << endl;
         // current weighted score is pop / 2
-        cout << "Score: " << cArr[i]->weightScore << endl << endl;
+        cout << "Score: " << mergeArr[i]->weightScore << endl << endl;
     }
 }
