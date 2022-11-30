@@ -69,7 +69,7 @@ int main()
     //mergeSort(cVector, 0, 5);
     mergeSort(mergeArr, 0, 9);
  
-    radixSort(radixArr, 9);
+    radixSort(radixArr, 10);
     
     /*
     still need to test sorting the city vector based on scores
