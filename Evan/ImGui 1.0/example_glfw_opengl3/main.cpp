@@ -21,6 +21,7 @@
 #endif
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+#include <string>
 
 
 // Simple helper function to load an image into a OpenGL texture with common settings
@@ -122,7 +123,7 @@ int main(int, char**)
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     {
         style.WindowRounding = 6.0f;
-        style.FrameRounding = 8.0f;
+        style.FrameRounding = 6.0f;
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 
     }
@@ -152,6 +153,8 @@ int main(int, char**)
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
     //ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, NULL, io.Fonts->GetGlyphRangesJapanese());
     //IM_ASSERT(font != NULL);
+    //loading tahoma font
+    io.Fonts->AddFontFromFileTTF("../../misc/fonts/tahoma.ttf", 16.0f);
 
     // Our state
     bool show_demo_window = false;
@@ -160,7 +163,12 @@ int main(int, char**)
     bool loadImage = true;
     
     //BACKGROUND COLOR
-    ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+    ImVec4 clear_color = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+
+    int population_, size_, avgHousingCost_, avgIncome_;
+    float density_;
+    int i1 = 500, i2 = 10, i4 = 10000, i5 = 10000;
+    float i3 = 0.48f;
 
     // Main loop
     while (!glfwWindowShouldClose(window))
@@ -179,7 +187,6 @@ int main(int, char**)
 
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         
-
         static bool no_titlebar = true;
         static bool no_scrollbar = false;
         static bool no_menu = true;
@@ -205,6 +212,7 @@ int main(int, char**)
         if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
         if (no_docking)         window_flags |= ImGuiWindowFlags_NoDocking;
         if (unsaved_document)   window_flags |= ImGuiWindowFlags_UnsavedDocument;
+
         
         // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
         {
@@ -233,37 +241,57 @@ int main(int, char**)
             {
                 if (ImGui::BeginMenu("File"))
                 {
+                    if (ImGui::MenuItem("Reset selections"))
+                    {
+                        i1 = 500, i2 = 10, i4 = 10000, i5 = 10000;
+                        i3 = 0.48f;
+                    }
                     if (ImGui::MenuItem("Exit"))
                     {
                         return EXIT_SUCCESS;
                     }
+                    
                     ImGui::EndMenu();
                 }
                 ImGui::Checkbox("Demo Window", &show_demo_window);
-                ImGui::Checkbox("Picture", &show_loading);
+                //ImGui::Checkbox("Picture", &show_loading);
                 ImGui::EndMainMenuBar();
             }
             //ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
 
             // i1 - i5 will contain all of the user inputs
-            static int i1 = 500, i2 = 10, i4 = 10000, i5 = 10000;
-            static float i3 = 0.48f;
+            
+            
             ImGui::SliderInt("Population", &i1, 500, 4800000);
             ImGui::SliderInt("City Size", &i2, 10, 1400);
             ImGui::SliderFloat("Population density", &i3, 0.48f, 400000);
             ImGui::SliderInt("Avg. income", &i4, 10000, 950000);
             ImGui::SliderInt("Avg. housing costs", &i5, 10000, 2400000);
 
+            population_ = i1;
+            size_ = i2;
+            avgHousingCost_ = i5;
+            avgIncome_ = i4;
+            density_ = i3;
+
             if (ImGui::Button("Load Results"))
-                show_results = true;
+                show_loading = true;
             ImGui::End();
         }
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
         if (show_loading)
         {
+            const ImGuiViewport* main_viewport = ImGui::GetMainViewport();
+            ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x + 640, main_viewport->WorkPos.y + 300), ImGuiCond_Once);
+            ImGui::SetNextWindowSize(ImVec2(640, 480), ImGuiCond_Once);
             ImGui::Begin("Loading...", &show_loading);
-            
+            ImGui::Text("The user has selected...");
+            ImGui::Text("population = %i", population_);
+            ImGui::Text("size = %i", size_);
+            ImGui::Text("density = %f", density_);
+            ImGui::Text("income = %i", avgIncome_);
+            ImGui::Text("housing = %i", avgHousingCost_);
             ImGui::End();
         }
         if (show_results)
