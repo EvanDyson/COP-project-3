@@ -21,9 +21,15 @@ struct City {
             avgIncome)
     {
         // SET WEIGHTS IN HERE
-        weightScore = 0;
+        weightScore = population / 2;
     }
+    void setWeight();
 };
+
+void City::setWeight()
+{
+    weightScore = population / 2;
+}
 /*
     score = [ | (population - user input) / max population | + 
             | (size - user input) / max size | + 
