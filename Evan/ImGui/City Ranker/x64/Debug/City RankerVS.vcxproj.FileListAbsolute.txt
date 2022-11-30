@@ -1,0 +1,2 @@
+G:\Visual Studios\source\repos\City RankerVS\x64\Debug\City RankerVS.exe
+G:\ImGUI\imgui\examples\City Ranker\x64\Debug\City RankerVS.exe
