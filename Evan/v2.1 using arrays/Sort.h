@@ -53,7 +53,8 @@ void merge(City* arr[], int left, int right)
     } //assigns left half array elements to left half representation
 
     int counter, indexL, indexR;
-    counter = indexL = indexR = 0;
+    counter = left;
+    indexL = indexR = 0;
     //creates index for the entire array, right subarray, and left subarray
     while (indexL < sizeL && indexR < sizeR)
     {
@@ -118,7 +119,8 @@ void merge(vector<City*> arr, int left, int right)
     } //assigns left half array elements to left half representation
 
     int counter, indexL, indexR;
-    counter = indexL = indexR = 0;
+    counter = left;
+    indexL = indexR = 0;
     //creates index for the entire array, right subarray, and left subarray
     while (indexL < leftSub.size() && indexR < rightSub.size())
     {
