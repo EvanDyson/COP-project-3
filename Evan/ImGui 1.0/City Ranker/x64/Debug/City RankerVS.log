@@ -1,4 +1,3 @@
 ﻿  main.cpp
 G:\ImGUI\imgui\examples\City Ranker\Sort.h(215,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  LINK : G:\ImGUI\imgui\examples\x64\Debug\City RankerVS.exe not found or not built by the last incremental link; performing full link
   City RankerVS.vcxproj -> G:\ImGUI\imgui\examples\x64\Debug\City RankerVS.exe

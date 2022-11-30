@@ -1,4 +1,4 @@
 ﻿  main.cpp
-G:\ImGUI\imgui\examples\example_glfw_opengl3\main.cpp(220,88): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-G:\ImGUI\imgui\examples\example_glfw_opengl3\main.cpp(220,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+G:\ImGUI\imgui\examples\example_glfw_opengl3\main.cpp(228,88): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+G:\ImGUI\imgui\examples\example_glfw_opengl3\main.cpp(228,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   example_glfw_opengl3.vcxproj -> G:\ImGUI\imgui\examples\example_glfw_opengl3\Debug\example_glfw_opengl3.exe
