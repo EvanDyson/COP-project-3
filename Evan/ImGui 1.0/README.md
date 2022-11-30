@@ -3,8 +3,6 @@
 
 ### - still need to test setting the weighted scores
 
-### - still need to test sorting the city vector based on scores
-
 ### - test setting specific parameters and see if expected outputs are seen
 
 ### - put tahoma in ...->imgui->misc->fonts
