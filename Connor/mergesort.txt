@@ -1,0 +1,49 @@
+void merge(vector<City>& arr, int left, int mid, int right) {
+
+    //Temporary vector to store sorted values before putting them back into arr
+    vector<City> temp;
+
+    //Counter variables
+    int i, j;
+    i = left;
+    j = mid + 1;
+
+    //Merge left and right values into temporary vector
+    while (i <= mid && j <= right) {
+        if (arr[i].weightScore <= arr[j].weightScore) {
+            temp.push_back(arr[i]);
+            ++i;
+        }
+        else {
+            temp.push_back(arr[j]);
+            ++j;
+        }
+    }
+
+    //Merge remaining values into temporary vector
+    while (i <= mid) {
+        temp.push_back(arr[i]);
+        ++i;
+    }
+
+    while (j <= right) {
+        temp.push_back(arr[j]);
+        ++j;
+    }
+
+    //Place values from temporary vector back into array
+    for (int i = left; i <= right; ++i) {
+        arr[i] = temp[i - left];
+    }
+
+}
+
+//Code sourced from module 6 lecture slides
+void mergeSort(vector<City>& arr, int left, int right) {
+    if (left < right) {
+        int mid = (left + right) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+}
