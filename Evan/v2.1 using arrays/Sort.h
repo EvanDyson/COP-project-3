@@ -89,7 +89,7 @@ void merge(City* arr[], int left, int right)
     //deletes the two subarray representations
 } //end of merge
 
-void mergeSort(vector<City*> arr, int left, int right)
+void mergeSort(std::vector<City*> arr, int left, int right)
 {
     if (left == right)
         return;
@@ -103,10 +103,10 @@ void mergeSort(vector<City*> arr, int left, int right)
     //merges newly sorted halves of array
 } //end of mergeSort
 
-void merge(vector<City*> arr, int left, int right)
+void merge(std::vector<City*> arr, int left, int right)
 {
-    vector<City*> rightSub;
-    vector<City*> leftSub;
+    std::vector<City*> rightSub;
+    std::vector<City*> leftSub;
     //creates representations of the right and left half of the array
 
     for (int i = 0; i < right - (left + (right - left) / 2); i++)
@@ -162,8 +162,8 @@ void radixSort(City* arr[], int size)
 
     for (int i = 1; max / i > 0; i *= 10)
     {
-        vector<City*> output(size, nullptr);
-        vector<int> count(10, 0);
+        std::vector<City*> output(size, nullptr);
+        std::vector<int> count(10, 0);
         //creates vectors to collect sorted values and frequencies of digit
 
         for (int j = 0; j < size; j++)
@@ -190,7 +190,7 @@ void radixSort(City* arr[], int size)
     } //end of for-loop that goes through every digit
 } //end of radixSort
 
-void radixSort(vector<City*> arr) {
+void radixSort(std::vector<City*> arr) {
     int max = arr.at(0)->weightScore;
     for (int i = 1; i < arr.size(); i++) {
         if (arr.at(i)->weightScore > max)
@@ -199,8 +199,8 @@ void radixSort(vector<City*> arr) {
 
     for (int i = 1; max / i > 0; i *= 10) //change i according to how many digits we want
     {
-        vector<City*> output(arr.size(), nullptr);
-        vector<int> count(10, 0);
+        std::vector<City*> output(arr.size(), nullptr);
+        std::vector<int> count(10, 0);
         //creates vectors to collect sorted values and frequencies of digit
 
         for (int j = 0; j < arr.size(); j++) {
