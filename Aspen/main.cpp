@@ -1,12 +1,13 @@
 #include "City.h"
 
+//# References: Slides from Module 6; mergeSort algorithm used code in slides to develop our array and vector-based versions
 void mergeSort (City* arr[], int left, int right);
 void merge(City* arr[], int left, int right);
-//array based mergeSort;  mergeSort information aided by class slides
+//array based mergeSort
 
 void mergeSort (std::vector<City*> &arr, int left, int right);
 void merge(std::vector<City*> &arr, int left, int right);
-//vector based mergeSort; mergeSort information aided by class slides
+//vector based mergeSort
 
 void radixSort (City* arr[], int size);
 //array based radixMap sort
@@ -227,6 +228,7 @@ void radixSort (std::vector<City*> &arr)
     } //end of for-loop that goes through every digit
 }
 
+//tests for sorts
 int main() {
     std::vector<City*> l;
     l.push_back(new City("3",1,1,1,1,1));
