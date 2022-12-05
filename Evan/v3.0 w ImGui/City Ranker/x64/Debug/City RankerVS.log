@@ -1,0 +1,4 @@
+﻿  main.cpp
+G:\ImGUI\imgui\examples\City Ranker\City.h(69,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+G:\ImGUI\imgui\examples\City Ranker\Sort.h(221,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  City RankerVS.vcxproj -> G:\ImGUI\imgui\examples\x64\Debug\City RankerVS.exe
