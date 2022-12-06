@@ -13,7 +13,5 @@ The data we will use for the list of cities will be 100,000 randomly generated c
 For visuals we will be trying to implement a framework called Walnut that uses Dear ImGui and Vulkan libraries. All of which are free to the public.
 
 ##### Links
-[Walnut](https://github.com/TheCherno/Walnut)  
-[Dear ImGui](https://github.com/ocornut/imgui)   
-[Vulkan](https://vulkan.lunarg.com/sdk/home#windows)  
+[Dear ImGui](https://github.com/ocornut/imgui)    
 [GUI inspiration](https://github.com/TheCherno): Yan Chernikov  
