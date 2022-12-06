@@ -1,7 +1,7 @@
 # THESE FILES WILL NOT RUN THEY ARE JUST FOR VISUALIZING THE CODE
  - tower.jpg is the background image
  - main.cpp is the main file for the GUI, it is not created by me. I have only modified it.
- - CityRanker.h is the file that opens the .csvfile created by Connor, reads it line by line and grabs all the info needed for the cities. It then pushes the cities onto a vector.
+ - CityRanker.h is the file that opens the .csv file created by Connor, reads it line by line and grabs all the info needed for the cities. It then pushes the cities onto a vector.
  - The vector created in CityRanker.h is then sent to and sorted in sort.h created by Aspen.
  - City.h is the file that holds the struct for city. It also holds the equation used to make the weighted scored created by Evan
  - main.cpp calls CityRankers() which only holds one function, it sends back a sorted vector.
