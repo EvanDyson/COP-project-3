@@ -29,7 +29,8 @@ vector<City*> CityRankers(int x, int pop_, int size_, float density_, int avginc
                 stringstream str(inLine);
                 // read in the parameters for each city
                 string name, population, size, density, avgHousingCost, avgIncome;
-                
+
+                // storing the name in a char* for the GUI functionality for printing
                 getline(str, name, ',');
                 char* tempName = new char[name.length()];
                 for (int g = 0; g < name.length(); g++)
@@ -42,12 +43,14 @@ vector<City*> CityRankers(int x, int pop_, int size_, float density_, int avginc
                 getline(str, avgHousingCost, ',');
                 getline(str, size, ',');
                 getline(str, avgIncome, ',');
+                // push all things into a city
                 pushMe->name = tempName;
                 pushMe->population = stoi(population);
                 pushMe->size = stoi(size);
                 pushMe->density = stof(density);
                 pushMe->avgHousingCost = stoi(avgHousingCost);
                 pushMe->avgIncome = stoi(avgIncome);
+                // set the weight with the inputted parameters gathered earlier
                 pushMe->setWeight(pop_, size_, density_, avgincome_, avghousing_);
 
                 // push city onto the city vector to be sorted later
@@ -85,6 +88,7 @@ vector<City*> CityRankers(int x, int pop_, int size_, float density_, int avginc
                 string name, population, size, density, avgHousingCost, avgIncome;
 
                 getline(str, name, ',');
+                // storing the name in a char* for the GUI functionality for printing
                 char* tempName = new char[name.length()];
                 for (int g = 0; g < name.length(); g++)
                 {
@@ -96,13 +100,16 @@ vector<City*> CityRankers(int x, int pop_, int size_, float density_, int avginc
                 getline(str, avgHousingCost, ',');
                 getline(str, size, ',');
                 getline(str, avgIncome, ',');
+                // push all things into a city
                 pushMe->name = tempName;
                 pushMe->population = stoi(population);
                 pushMe->size = stoi(size);
                 pushMe->density = stof(density);
                 pushMe->avgHousingCost = stoi(avgHousingCost);
                 pushMe->avgIncome = stoi(avgIncome);
+                // set the weight with the inputted parameters gathered earlier
                 pushMe->setWeight(pop_, size_, density_, avgincome_, avghousing_);
+                // push that city back into the vector
                 radixVector.push_back(pushMe);
                 index++;
             }

@@ -19,7 +19,9 @@ struct City {
         name), population(population), size(size), density(density), avgHousingCost(avgHousingCost), avgIncome(
             avgIncome) {}
     void operator=(const City& c);
+    // default test set weight function
     void setWeight();
+    //  the setweight that we used in our program
     void setWeight(int population, int size, float density, int avgHousingCost, int avgIncome);
     void setWeightScore(int x) { weightScore = x; }
     int getWeightScore() { return weightScore; }

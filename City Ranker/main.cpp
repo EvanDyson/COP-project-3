@@ -348,7 +348,10 @@ int main(int, char**)
 
         static ImGuiTableFlags tableFlags =
             ImGuiTableFlags_RowBg | ImGuiTableFlags_BordersOuter | ImGuiTableFlags_BordersV | ImGuiTableFlags_ScrollY;
-        
+
+
+//    =============    ===========    THIS IS WHERE MY GUI WINDOW CREATION STARTS THE SETTINGS FOR IT ARE ABOVE     ============       ==============
+
         // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
         {
             // load a background image
@@ -371,6 +374,7 @@ int main(int, char**)
             ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x + 320, main_viewport->WorkPos.y + 140), ImGuiCond_Once);
             ImGui::SetNextWindowSize(ImVec2(1280, 800), ImGuiCond_Once);
 
+            // creating the input window as a bool in an if to open and close the window. the window size settings are above
             if (userInput)
             {
                 ImGui::Begin("Getting user input", NULL, window_flags);
@@ -380,13 +384,10 @@ int main(int, char**)
                     if (ImGui::Button("Exit"))
                         return EXIT_SUCCESS;
 
-                    //ImGui::Checkbox("Demo Window", &show_demo_window);
                     ImGui::EndMainMenuBar();
                 }
-                //ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-
                 // i1 - i5 will contain all of the user inputs
-
+                // this is creating all my sliders to get user input
                 ImGui::Text("");
                 ImGui::Text("  Welcome to City Rankers!");
                 ImGui::Text("");
@@ -414,6 +415,7 @@ int main(int, char**)
                 ImGui::SameLine();
                 ImGui::SliderInt("Avg. housing costs", &i5, 10000, 2400000);
 
+                // this is setting my buttons positions and creating them
                 ImGui::SetCursorPos(ImVec2(main_viewport->WorkPos.x + 135, main_viewport->WorkPos.y + 555));
                 if (ImGui::Button("Load Results") && e != 0)
                     show_results = true;
@@ -426,7 +428,7 @@ int main(int, char**)
                     e = 0;
                     bool scannedYet = false;
                 }
-
+                // this is setting my buttons positions and creating them
                 ImGui::SetCursorPos(ImVec2(main_viewport->WorkPos.x + 985, main_viewport->WorkPos.y + 555));
                 ImGui::RadioButton("Merge Sort", &e, 1);
                 ImGui::SetCursorPos(ImVec2(main_viewport->WorkPos.x + 985, main_viewport->WorkPos.y + 645));
@@ -437,6 +439,7 @@ int main(int, char**)
                 ImGui::End();
             }
 
+            // this is to show a demo window ** used in debugging **
             if (show_demo_window)
                 ImGui::ShowDemoWindow(&show_demo_window);
 
@@ -462,20 +465,19 @@ int main(int, char**)
                 ImGui::End();
             }
 
-            //showing result window
+            // showing result window
             if (show_results)
             {
                 const ImGuiViewport* main_viewport = ImGui::GetMainViewport();
                 ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x + 320, main_viewport->WorkPos.y + 140), ImGuiCond_Once);
                 ImGui::SetNextWindowSize(ImVec2(1280, 800), ImGuiCond_Once);
                 ImGui::SetNextWindowBgAlpha(0.80f);
-                ImGui::Begin("Results", &show_results, resultWindow);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+                // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+                ImGui::Begin("Results", &show_results, resultWindow);
                 if (ImGui::BeginMainMenuBar())
                 {
                     if (ImGui::Button("Exit"))
                         return EXIT_SUCCESS;
-
-                    //ImGui::Checkbox("Demo Window", &show_demo_window);
                     ImGui::EndMainMenuBar();
                 }
                 //this closes the input window while the result window is open
@@ -489,7 +491,6 @@ int main(int, char**)
                     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
                     mergeTime = elapsed.count();
                     scannedYet = true;
-                    //cout << "Merge sort took " << elapsed.count() * 1e-9 << " seconds" << endl << endl << endl;
                 }
                 else if (!scannedYet && e == 2)
                 {
@@ -499,13 +500,11 @@ int main(int, char**)
                     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
                     radixTime = elapsed.count();
                     scannedYet = true;
-                    //cout << "Merge sort took " << elapsed.count() * 1e-9 << " seconds" << endl << endl << endl;
                 }
                 if (e == 1)
                 {
                     //creating my table to display results
-                    //resizing the vector to be smaller for viewing purposes.
-                    //mergeVector.resize(50);
+                    // this is creating my slider to select how many cities to show on the table, the range is 15 - 100,000
                     ImGui::Text("How many cities would you like to view?");
                     ImGui::SliderInt(" ", &tableSize, 15, 100000);
                     ImGui::Text("");
@@ -531,7 +530,6 @@ int main(int, char**)
                                 for (int column = 0; column < 7; column++)
                                 {
                                     ImGui::TableSetColumnIndex(column);
-                                    //ImGui::Text("Hello %d,%d", column, row);
                                     if (column == 0)
                                     {
                                         ImGui::Text("%s", mergeVector[row]->name);
@@ -565,6 +563,7 @@ int main(int, char**)
                         }
                         ImGui::EndTable();
                     }
+                    // creating a checkbox to show user input
                     if (showwhatuinputted)
                     {
                         ImGui::Text("Population = %i", i1);
@@ -576,13 +575,13 @@ int main(int, char**)
                     else
                         ImGui::Text("");
                     ImGui::Text("");
+                    // outputting the time the sort took
                     ImGui::Text("Your merge sort took %i milliseconds to sort.", mergeTime);
                 }
                 else if (e == 2)
                 {
                     //creating my table to display results
-                    //resizing the vector to be smaller for viewing purposes.
-                    //mergeVector.resize(50);
+                    // this is creating my slider to select how many cities to show on the table, the range is 15 - 100,000
                     ImGui::Text("How many cities would you like to view?");
                     ImGui::SliderInt(" ", &tableSize, 15, 100000);
                     ImGui::Text("");
@@ -642,6 +641,7 @@ int main(int, char**)
                         }
                         ImGui::EndTable();
                     }
+                    // creating a checkbox to show user input
                     if (showwhatuinputted)
                     {
                         ImGui::Text("Population = %i", i1);
@@ -653,12 +653,14 @@ int main(int, char**)
                     else
                         ImGui::Text("");
                     ImGui::Text("");
+                    // outputting the time the sort took
                     ImGui::Text("Radix sort took %i milliseconds to sort.", radixTime);
                 }
                 ImGui::Text("");
                 ImGui::Checkbox("User Inputs", &showwhatuinputted);
                 
                 ImGui::Text("");
+                // reset back to input screen button
                 if (ImGui::Button("Go back to inputs"))
                 {
                     i1 = 0, i2 = 0, i4 = 0, i5 = 0;
@@ -674,12 +676,6 @@ int main(int, char**)
             }
 
         }
-
-
-
-
-
-
 
         // Rendering
         ImGui::Render();
