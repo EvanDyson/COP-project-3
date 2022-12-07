@@ -190,7 +190,7 @@ int main(int, char**)
     // Create window with graphics context
     //GLFWwindow* window = glfwCreateWindow(1920, 1080, "Testing ImGui", glfwGetPrimaryMonitor(), NULL);
     
-    GLFWwindow* window = glfwCreateWindow(1920, 1080, "Testing ImGui", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(1920, 1080, "City Ranker", NULL, NULL);
     if (window == NULL)
         return 1;
     glfwMaximizeWindow(window);
